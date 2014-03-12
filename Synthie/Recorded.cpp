@@ -16,7 +16,7 @@ CRecorded::CRecorded(void)
 
 bool CRecorded::LoadFile(void)
 {
-	if(!m_waveFile.Open(".\\media\\shortskirtmet2.wav"))
+	if(!m_waveFile.Open(".\\Synthie\\media\\shortskirtmet2.wav"))
 		return FALSE;
 
 	m_sampleRate = m_waveFile.SampleRate();
