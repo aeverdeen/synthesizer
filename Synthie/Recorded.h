@@ -32,6 +32,7 @@ public:
 			return FALSE;
 		}
 		int measure;
+		int scale;
 		double beat;
 		wstring eName; 
 	} ;
@@ -47,6 +48,7 @@ public:
 
 	void ProcessReadFrame(short *p_frame);
 	void ProcessEffects(short *p_frame);
+	void ProcessFuzz(short *p_frame);
 
 	void XmlLoadEffect(IXMLDOMNode *xml);
 
@@ -62,6 +64,7 @@ private:
 	int m_currentEffect;
 	bool m_fuzz; //These two booleans determine which effect is to be applied
 	bool m_dynamic;
+	int m_scale; // The scale of the fuzz effect
 
 	std::vector<RecordedEffect> m_effects;
 };

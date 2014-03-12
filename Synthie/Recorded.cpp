@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "Recorded.h"
 #include "xmlhelp.h"
+#include <cmath>
 
 
 CRecorded::CRecorded(void)
@@ -58,6 +59,9 @@ void CRecorded::Start(void)
 	m_time = 0;
 	m_currentEffect = 0;
 	m_waveFile.Rewind();
+	m_fuzz = FALSE;
+	m_dynamic = FALSE;
+	m_scale = 0;
 }
 
 bool CRecorded::Generate(void)
@@ -87,6 +91,7 @@ bool CRecorded::Generate(void)
 		{
 			m_fuzz = TRUE;
 			m_dynamic = TRUE;
+			m_scale = effect->scale;
 		}
 		else if(effect->eName == L"dynamic")
 		{
@@ -97,6 +102,7 @@ bool CRecorded::Generate(void)
 		{
 			m_fuzz = TRUE;
 			m_dynamic = FALSE;
+			m_scale = effect->scale;
 		}
 		else
 		{
@@ -116,6 +122,41 @@ bool CRecorded::Generate(void)
 
 void CRecorded::ProcessEffects(short *p_frame)
 {
+	if(m_fuzz)
+	{
+		ProcessFuzz(p_frame);
+	}
+}
+
+void CRecorded::ProcessFuzz(short *p_frame)
+{
+	for(int i = 32000; i > 0; i -= 1000 * m_scale)
+	{
+		if(p_frame[0] > i)
+		{
+			p_frame[0] = i;
+			break;
+		}
+		else if(p_frame[0] < (-1)*i)
+		{
+			p_frame[0] = (-1)*i;
+			break;
+		}
+	}
+
+	for(int i = 32000; i > 0; i -= 1000 * m_scale)
+	{
+		if(p_frame[1] > i)
+		{
+			p_frame[1] = i;
+			break;
+		}
+		else if(p_frame[1] < (-1)*i)
+		{
+			p_frame[1] = (-1)*i;
+			break;
+		}
+	}
 }
 
 void CRecorded::XmlLoadEffect(IXMLDOMNode *xml)
@@ -160,6 +201,11 @@ void CRecorded::XmlLoadEffect(IXMLDOMNode *xml)
 		{
 			value.ChangeType(VT_R8);
 			temp.beat = value.dblVal - 1;
+		}
+		else if(attName == L"scale")
+		{
+			value.ChangeType(VT_I4);
+			temp.scale = value.intVal;
 		}
 	}
 

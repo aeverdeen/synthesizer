@@ -20,7 +20,7 @@
      </instrument>
 	 <instrument instrument="Recorded">
 		<note measure="1" beat="1">
-			<effect effect="none" measure="4" beat="2"/>
+			<effect effect="fuzz" measure="4" beat="2"/>
 			<effect effect="fuzz" measure="5" beat="2"/>
 			<effect effect="both" measure="8" beat="1.25"/>
 		</note>
