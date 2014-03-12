@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "Synthesizer.h"
 #include "ToneInstrument.h"
+#include "Recorded.h"
 #include "xmlhelp.h"
 
 #include <cmath>
@@ -82,6 +83,11 @@ bool CSynthesizer::Generate(double * frame)
 
 
 
+		else if(note->Instrument() == L"Recorded")
+		{
+			instrument = new CRecorded();
+		}
+
         // Configure the instrument object
         if(instrument != NULL)
         {
@@ -127,6 +133,8 @@ bool CSynthesizer::Generate(double * frame)
         CInstrument *instrument = *node;
 
 		instrument->SetBpm(m_bpm);
+		instrument->SetBeat(m_beat);
+		instrument->SetMeasure(m_measure);
 
         // Call the generate function
         if(instrument->Generate())
@@ -319,7 +327,7 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode * xml)
         CComVariant value;
         attrib->get_nodeValue(&value);
 
-        if(name == "instrument")
+        if(name == L"instrument")
         {
             instrument = value.bstrVal;
         }

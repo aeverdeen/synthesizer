@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<score bpm="120" beatspermeasure="2">
+	 <instrument instrument="Recorded">
+		<note measure="1" beat="1">
+			<effect effect="fuzz" scale="5" measure="1" beat="1"/>
+			<effect effect="fuzz" scale="20" measure="5" beat="2"/>
+			<effect effect="both" scale="1" measure="8" beat="1.25"/>
+		</note>
+	 </instrument>
+</score>
+

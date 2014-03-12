@@ -137,6 +137,7 @@
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="ProgressDlg.cpp" />
+    <ClCompile Include="Recorded.cpp" />
     <ClCompile Include="SineWave.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -165,6 +166,7 @@
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Progress.h" />
     <ClInclude Include="ProgressDlg.h" />
+    <ClInclude Include="Recorded.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SineWave.h" />
     <ClInclude Include="stdafx.h" />
@@ -182,6 +184,8 @@
     <ClInclude Include="xmlhelp.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="media\loveyoumadly120_2.wav" />
+    <None Include="media\shortskirtmet2.wav" />
     <None Include="res\Synthie.ico" />
     <None Include="res\Synthie.rc2" />
     <None Include="res\Toolbar.bmp" />

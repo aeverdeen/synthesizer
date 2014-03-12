@@ -75,6 +75,9 @@
     <ClCompile Include="AR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Recorded.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="WavePlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -164,6 +167,9 @@
     <ClInclude Include="WaveInstrumentFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Recorded.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Synthie.ico">
@@ -179,6 +185,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UserImages.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="media\shortskirtmet2.wav">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="media\loveyoumadly120_2.wav">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
