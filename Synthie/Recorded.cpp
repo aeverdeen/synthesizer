@@ -153,7 +153,7 @@ void CRecorded::ProcessDynamic(short *p_frame)
 
 	double R = 1.0 - (m_bandwidth / 2.0);
 	double cosTheta = (2.0 * R * cos(2.0 * const_pi * temp_frequency)) / (1.0 + pow(R, 2));
-	double amplitude = 3.7 * (1.0 - pow(R, 2)) * sqrt(1.0 - pow(cosTheta, 2));
+	double amplitude = 3.8 * (1.0 - pow(R, 2)) * sqrt(1.0 - pow(cosTheta, 2));
 
 	p_frame[0] = short(amplitude * p_frame[0] + 2.0 * R * cosTheta * m_prev1[0] - pow(R, 2) * m_prev2[0]);
 	p_frame[1] = short(amplitude * p_frame[1] + 2.0 * R * cosTheta * m_prev1[1] - pow(R, 2) * m_prev2[1]);
