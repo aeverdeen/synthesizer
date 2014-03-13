@@ -2,13 +2,8 @@
 <score bpm="120" beatspermeasure="2">
 	 <instrument instrument="Recorded">
 		<note measure="1" beat="1">
-			<effect effect="fuzz" scale="3" measure="1" beat="1"/>
-			<effect effect="fuzz" scale="20" measure="5" beat="2"/>
-			<effect effect="both" scale="12" measure="8" beat="1.25"/>
+			<effect effect="fuzz" scale="6" measure="1" frequency="0.01134" bandwidth="0.01" beat="1.25"/>
 		</note>
-	 </instrument>
-	 <instrument instrument="Wave">
-		<note measure="1" beat="1"/>
 	 </instrument>
 </score>
 

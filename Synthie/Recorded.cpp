@@ -1,7 +1,8 @@
 #include "StdAfx.h"
 #include "Recorded.h"
 #include "xmlhelp.h"
-#include <cmath>
+
+const double const_pi = 3.1415926;
 
 
 CRecorded::CRecorded(void)
@@ -92,11 +93,15 @@ bool CRecorded::Generate(void)
 			m_fuzz = TRUE;
 			m_dynamic = TRUE;
 			m_scale = effect->scale;
+			m_bandwidth = effect->band;
+			m_frequency = effect->freq;
 		}
 		else if(effect->eName == L"dynamic")
 		{
 			m_fuzz = FALSE;
 			m_dynamic = TRUE;
+			m_bandwidth = effect->band;
+			m_frequency = effect->freq;
 		}
 		else if(effect->eName == L"fuzz")
 		{
@@ -114,6 +119,13 @@ bool CRecorded::Generate(void)
 
 	ProcessEffects(temp);
 
+	RangeBound(temp);
+
+	m_prev2[0] = m_prev1[0];
+	m_prev2[1] = m_prev1[1];
+	m_prev1[0] = temp[0];
+	m_prev1[1] = temp[1];
+
 	m_frame[0] = double(temp[0]) / 32768.0;
 	m_frame[1] = double(temp[1]) / 32768.0;
 	m_time += GetSamplePeriod();
@@ -126,11 +138,30 @@ void CRecorded::ProcessEffects(short *p_frame)
 	{
 		ProcessFuzz(p_frame);
 	}
+	if(m_dynamic)
+	{
+		ProcessDynamic(p_frame);
+	}
+}
+
+void CRecorded::ProcessDynamic(short *p_frame)
+{
+	double temp_frequency;
+	temp_frequency = m_frequency * (1.0 + 0.3 * sin(2.0 * const_pi * m_time / 2.5));
+
+	//m_bandwidth = 0.01 * (1.0 + 0.8 *sin(2.0 * const_pi * m_time));
+
+	double R = 1.0 - (m_bandwidth / 2.0);
+	double cosTheta = (2.0 * R * cos(2.0 * const_pi * temp_frequency)) / (1.0 + pow(R, 2));
+	double amplitude = 3.7 * (1.0 - pow(R, 2)) * sqrt(1.0 - pow(cosTheta, 2));
+
+	p_frame[0] = short(amplitude * p_frame[0] + 2.0 * R * cosTheta * m_prev1[0] - pow(R, 2) * m_prev2[0]);
+	p_frame[1] = short(amplitude * p_frame[1] + 2.0 * R * cosTheta * m_prev1[1] - pow(R, 2) * m_prev2[1]);
 }
 
 void CRecorded::ProcessFuzz(short *p_frame)
 {
-	for(int i = 32000; i > 0; i -= 1000 * m_scale)
+	for(int i = 32000; i > 0; i -= m_scale * int(1000.0 + 100.0 * sin(2.0 * const_pi * m_time / 2.0)))
 	{
 		if(p_frame[0] > i)
 		{
@@ -144,7 +175,7 @@ void CRecorded::ProcessFuzz(short *p_frame)
 		}
 	}
 
-	for(int i = 32000; i > 0; i -= 1000 * m_scale)
+	for(int i = 32000; i > 0; i -= m_scale * int(1000.0 + 100.0 * sin(2.0 * const_pi * m_time / 2.0)))
 	{
 		if(p_frame[1] > i)
 		{
@@ -156,6 +187,27 @@ void CRecorded::ProcessFuzz(short *p_frame)
 			p_frame[1] = (-1)*i;
 			break;
 		}
+	}
+}
+
+void CRecorded::RangeBound(short *value)
+{
+	if(value[0] > 32767)
+	{
+		value[0] = 32767;
+	}
+	else if(value[0] < -32767)
+	{
+		value[0] = -32767;
+	}
+
+	if(value[1] > 32767)
+	{
+		value[1] = 32767;
+	}
+	else if(value[1] < -32767)
+	{
+		value[1] = -32767;
 	}
 }
 
@@ -206,6 +258,16 @@ void CRecorded::XmlLoadEffect(IXMLDOMNode *xml)
 		{
 			value.ChangeType(VT_I4);
 			temp.scale = value.intVal;
+		}
+		else if(attName == L"frequency")
+		{
+			value.ChangeType(VT_R8);
+			temp.freq = value.dblVal;
+		}
+		else if(attName == L"bandwidth")
+		{
+			value.ChangeType(VT_R8);
+			temp.band = value.dblVal;
 		}
 	}
 
