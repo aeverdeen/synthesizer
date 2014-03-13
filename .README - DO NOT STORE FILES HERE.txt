@@ -1,0 +1,6 @@
+This local directory is for the storage of temporary files only. Do not save important files here.
+Save important files in your home directory (M: drive).
+Local files may be deleted at anytime, including when you log off.
+
+Please visit the webpage below for more information about what network storage spaces are provided by DECS.
+http://www.egr.msu.edu/decs/services/storage/network

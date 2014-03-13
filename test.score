@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<score bpm="120" beatspermeasure="2">
-     <instrument instrument="WaveB">
+<score bpm="120" beatspermeasure="4">
+	 <instrument instrument="WaveB">
           <note measure="1" beat="2" duration="0.33" note="F4"/>
           <note measure="1" beat="2.33" duration="0.33" note="G4"/>
           <note measure="1" beat="2.6" duration="0.33" note="A4"/>
@@ -47,5 +47,16 @@
           <note measure="8" beat="1" duration="4" note="D4" attack = "0.05" sustain = "1.0"/>
 	   
      </instrument>
+	 <instrument instrument="Wave">
+		<note measure="1" beat="1" duration="8" note="C4"/>
+	 </instrument>
+	 <instrument instrument="Recorded">
+		<note measure="1" beat="1">
+			<effect effect="fuzz" scale="6" measure="1" beat="1"/>
+			<effect effect="dynamic"  frequency="0.01134" bandwidth="0.01" measure="3" beat="1"/>
+			<effect effect="both" scale="10"  frequency="0.04351" bandwidth="0.01" measure="5" beat="1"/>
+			<effect effect="none" measure="7" beat="1"/>
+		</note>
+	 </instrument>
 </score>
 

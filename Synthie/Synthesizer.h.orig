@@ -4,8 +4,12 @@
 #include <list>
 #include "Instrument.h"
 #include "Note.h"
+<<<<<<< HEAD
 #include "WaveInstrumentFactoryB.h"
+=======
 #include "WaveInstrumentFactory.h"
+>>>>>>> origin/merging
+
 class CSynthesizer
 {
 public:
@@ -63,8 +67,11 @@ private:
     int m_measure;              //!< The current measure
     double m_beat;              //!< The current beat within the measure
 
+<<<<<<< HEAD
+	CWaveInstrumentFactoryB m_waveinstfactory;
+=======
 	CWaveInstrumentFactory m_waveinstfactory;
 
-	CWaveInstrumentFactoryB m_waveinstfactoryB;
+>>>>>>> origin/merging
 };
 
