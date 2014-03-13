@@ -149,8 +149,6 @@ void CRecorded::ProcessDynamic(short *p_frame)
 	double temp_frequency;
 	temp_frequency = m_frequency * (1.0 + 0.3 * sin(2.0 * const_pi * m_time / 2.5));
 
-	//m_bandwidth = 0.01 * (1.0 + 0.8 *sin(2.0 * const_pi * m_time));
-
 	double R = 1.0 - (m_bandwidth / 2.0);
 	double cosTheta = (2.0 * R * cos(2.0 * const_pi * temp_frequency)) / (1.0 + pow(R, 2));
 	double amplitude = 3.8 * (1.0 - pow(R, 2)) * sqrt(1.0 - pow(cosTheta, 2));
@@ -161,7 +159,7 @@ void CRecorded::ProcessDynamic(short *p_frame)
 
 void CRecorded::ProcessFuzz(short *p_frame)
 {
-	for(int i = 32000; i > 0; i -= m_scale * int(1000.0 + 100.0 * sin(2.0 * const_pi * m_time / 2.0)))
+	for(int i = 32000; i > 0; i -= m_scale * 1000)
 	{
 		if(p_frame[0] > i)
 		{
@@ -175,7 +173,7 @@ void CRecorded::ProcessFuzz(short *p_frame)
 		}
 	}
 
-	for(int i = 32000; i > 0; i -= m_scale * int(1000.0 + 100.0 * sin(2.0 * const_pi * m_time / 2.0)))
+	for(int i = 32000; i > 0; i -= m_scale * 1000)
 	{
 		if(p_frame[1] > i)
 		{
