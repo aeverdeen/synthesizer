@@ -17,7 +17,7 @@ CRecorded::CRecorded(void)
 
 bool CRecorded::LoadFile(void)
 {
-	if(!m_waveFile.Open(".\\Synthie\\media\\shortskirtmet2.wav"))
+	if(!m_waveFile.Open(".\\Synthie\\media\\shortskirtmet2.wav")) // Tries to open the file
 		return FALSE;
 
 	m_sampleRate = m_waveFile.SampleRate();
@@ -87,7 +87,8 @@ bool CRecorded::Generate(void)
         if(effect->measure == m_curMeasure && effect->beat > m_curBeat)
             break;
 
-        // Figure out which effect to apply
+        // Figure out which effect to apply,
+		// and set the associating values
 		if(effect->eName == L"both")
 		{
 			m_fuzz = TRUE;
@@ -119,16 +120,20 @@ bool CRecorded::Generate(void)
 
 	ProcessEffects(temp);
 
+	// Keeps the sample from clipping
 	RangeBound(temp);
 
+	// These four lines save the previous two samples
 	m_prev2[0] = m_prev1[0];
 	m_prev2[1] = m_prev1[1];
 	m_prev1[0] = temp[0];
 	m_prev1[1] = temp[1];
 
+	// Divides to get the sample between 0 and 1
 	m_frame[0] = double(temp[0]) / 32768.0;
 	m_frame[1] = double(temp[1]) / 32768.0;
 	m_time += GetSamplePeriod();
+	// Returns false when sample is done playing
 	return m_time < (m_duration - 0.01);
 }
 
@@ -144,9 +149,13 @@ void CRecorded::ProcessEffects(short *p_frame)
 	}
 }
 
+
+// This function creates a dynamic reson filter
 void CRecorded::ProcessDynamic(short *p_frame)
 {
 	double temp_frequency;
+
+	// This modulates the frequency of the filter to create a "wah" effect
 	temp_frequency = m_frequency * (1.0 + 0.3 * sin(2.0 * const_pi * m_time / 2.5));
 
 	double R = 1.0 - (m_bandwidth / 2.0);
@@ -157,6 +166,8 @@ void CRecorded::ProcessDynamic(short *p_frame)
 	p_frame[1] = short(amplitude * p_frame[1] + 2.0 * R * cosTheta * m_prev1[1] - pow(R, 2) * m_prev2[1]);
 }
 
+
+// This function clips the signal if it goes over a certain value
 void CRecorded::ProcessFuzz(short *p_frame)
 {
 	for(int i = 32000; i > 0; i -= m_scale * 1000)

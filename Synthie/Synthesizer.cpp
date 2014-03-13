@@ -22,7 +22,7 @@ CSynthesizer::CSynthesizer(void)
 	m_bpm = 120;
 	m_beatspermeasure = 4;
 	m_secperbeat = 0.5;
-		m_waveinstfactory.LoadFile("drumriff.wav");
+	m_waveinstfactory.LoadFile("drumriff.wav");
 }
 
 
@@ -79,10 +79,7 @@ bool CSynthesizer::Generate(double * frame)
             m_waveinstfactory.SetNote(note);
             instrument = m_waveinstfactory.CreateInstrument();
         }
-
-
-
-
+		
 		else if(note->Instrument() == L"Recorded")
 		{
 			instrument = new CRecorded();
@@ -133,7 +130,7 @@ bool CSynthesizer::Generate(double * frame)
         CInstrument *instrument = *node;
 
 		instrument->SetBpm(m_bpm);
-		instrument->SetBeat(m_beat);
+		instrument->SetBeat(m_beat); // Tells the instrument what beat and measure we are currently on
 		instrument->SetMeasure(m_measure);
 
         // Call the generate function
