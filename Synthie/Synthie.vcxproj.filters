@@ -75,6 +75,15 @@
     <ClCompile Include="AR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WaveInstrumentB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveInstrumentFactoryB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WavePlayerB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio\DirSound.h">
@@ -144,6 +153,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WavePlayerB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveInstrumentFactoryB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveInstrumentB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

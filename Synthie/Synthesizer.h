@@ -4,6 +4,7 @@
 #include <list>
 #include "Instrument.h"
 #include "Note.h"
+#include "WaveInstrumentFactoryB.h"
 
 class CSynthesizer
 {
@@ -62,5 +63,6 @@ private:
     int m_measure;              //!< The current measure
     double m_beat;              //!< The current beat within the measure
 
+	CWaveInstrumentFactoryB m_waveinstfactory;
 };
 
