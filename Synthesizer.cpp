@@ -70,6 +70,8 @@ bool CSynthesizer::Generate(double * frame)
         {
             instrument = new CToneInstrument();
         }
+		
+
 
         // Configure the instrument object
         if(instrument != NULL)
@@ -138,6 +140,48 @@ bool CSynthesizer::Generate(double * frame)
         // Move to the next instrument in the list
         node = next;
     }
+
+	//
+	//Phase 3a: Effects
+	//
+
+	//double cframe[2];
+	//m_chorus.Process(frame, cframe);
+
+	//for(int c= 0; c<2; c++)
+	//{
+	//	frame[c] = cframe[c];
+	//}
+
+
+	//double rframe[2];
+	//m_reverb.Process(frame, rframe);
+	
+	//for(int c = 0; c<2; c++)
+	//{
+	//  frame[c] = rframe[2];
+	//}
+
+	//double ringframe[2];
+	//m_ringmodulation.Process(frame, ringframe);
+
+	//for(int c = 0; c<2; c++)
+	//{
+	//  frame[c] = ringframe[c];
+	//}
+
+	//double fframe[2];
+	//m_flange.Process(frame,fframe);
+
+	//for(int c = 0;c<2; c++)
+	//{
+	//  frame[c] = fframe[c];
+	//}
+
+	//for(int c = 0; c <3; c++)
+	//{
+	//	frame[c] = cframe[c] + rframe[c] + ringframe[c];
+	//}
 
 	//
     // Phase 4: Advance the time and beats

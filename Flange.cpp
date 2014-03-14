@@ -48,7 +48,9 @@ void CFlange::Process(double * inframe, double * outframe)
 		outframe[0] += m_queue[(m_rloc - delayframe * 2 + m_queuesize) % m_queuesize] ;
 		outframe[1] += m_queue[(m_rloc - delayframe * 2 + m_queuesize + 1) % m_queuesize];
 	}
-
+	m_rloc = (m_rloc + 2) % m_queuesize;
+	m_time += 1./m_sampleRate;
+}
 
 
 

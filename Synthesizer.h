@@ -4,6 +4,11 @@
 #include <list>
 #include "Instrument.h"
 #include "Note.h"
+#include "Chorus.h"
+#include "Delay.h"
+#include "Reverb.h"
+#include "RingModulation.h"
+#include "Flange.h"
 
 class CSynthesizer
 {
@@ -47,6 +52,12 @@ private:
     int		m_channels;
     double	m_sampleRate;
     double	m_samplePeriod;
+	CChorus m_chorus;
+	CReverb m_reverb;
+	CRingModulation m_ringmodulation;
+	CFlange m_flange;
+	
+
 
 	double m_time;
 
