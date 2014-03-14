@@ -2,7 +2,6 @@
 #include <algorithm>
 #include "Synthesizer.h"
 #include "ToneInstrument.h"
-#include "Recorded.h"
 #include "xmlhelp.h"
 
 #include <cmath>
@@ -22,8 +21,6 @@ CSynthesizer::CSynthesizer(void)
 	m_bpm = 120;
 	m_beatspermeasure = 4;
 	m_secperbeat = 0.5;
-	m_waveinstfactory.LoadFile("drumriff.wav");	
-	m_waveinstfactoryB.LoadFile("13-AccMastr_A3.wav"); //load wave file
 }
 
 
@@ -46,7 +43,6 @@ bool CSynthesizer::Generate(double * frame)
 	//
     // Phase 1: Determine if any notes need to be played.
     //
-
 
     while(m_currentNote < (int)m_notes.size())
     {
@@ -74,23 +70,8 @@ bool CSynthesizer::Generate(double * frame)
         {
             instrument = new CToneInstrument();
         }
-
-        else if(note->Instrument() == L"Wave")
-        {
-            m_waveinstfactory.SetNote(note);
-            instrument = m_waveinstfactory.CreateInstrument();
-        }
-
-        else if(note->Instrument() == L"WaveB")
-        {
-            m_waveinstfactory.SetNote(note);
-            instrument = m_waveinstfactoryB.CreateInstrument();
-        }
 		
-		else if(note->Instrument() == L"Recorded")
-		{
-			instrument = new CRecorded();
-		}
+
 
         // Configure the instrument object
         if(instrument != NULL)
@@ -137,8 +118,6 @@ bool CSynthesizer::Generate(double * frame)
         CInstrument *instrument = *node;
 
 		instrument->SetBpm(m_bpm);
-		instrument->SetBeat(m_beat); // Tells the instrument what beat and measure we are currently on
-		instrument->SetMeasure(m_measure);
 
         // Call the generate function
         if(instrument->Generate())
@@ -161,6 +140,48 @@ bool CSynthesizer::Generate(double * frame)
         // Move to the next instrument in the list
         node = next;
     }
+
+	//
+	//Phase 3a: Effects
+	//
+
+	//double cframe[2];
+	//m_chorus.Process(frame, cframe);
+
+	//for(int c= 0; c<2; c++)
+	//{
+	//	frame[c] = cframe[c];
+	//}
+
+
+	//double rframe[2];
+	//m_reverb.Process(frame, rframe);
+	
+	//for(int c = 0; c<2; c++)
+	//{
+	//  frame[c] = rframe[2];
+	//}
+
+	//double ringframe[2];
+	//m_ringmodulation.Process(frame, ringframe);
+
+	//for(int c = 0; c<2; c++)
+	//{
+	//  frame[c] = ringframe[c];
+	//}
+
+	//double fframe[2];
+	//m_flange.Process(frame,fframe);
+
+	//for(int c = 0;c<2; c++)
+	//{
+	//  frame[c] = fframe[c];
+	//}
+
+	//for(int c = 0; c <3; c++)
+	//{
+	//	frame[c] = cframe[c] + rframe[c] + ringframe[c];
+	//}
 
 	//
     // Phase 4: Advance the time and beats
@@ -331,7 +352,7 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode * xml)
         CComVariant value;
         attrib->get_nodeValue(&value);
 
-        if(name == L"instrument")
+        if(name == "instrument")
         {
             instrument = value.bstrVal;
         }

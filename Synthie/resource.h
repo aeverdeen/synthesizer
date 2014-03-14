@@ -17,9 +17,6 @@
 #define IDR_SynthieTYPE                 130
 #define IDD_PROGRESS_DLG                131
 #define IDS_EDIT_MENU                   306
-#define IDR_CAKEJACKET                  310
-#define IDR_JACKET                      310
-#define IDR_MADLY                       311
 #define IDC_PROGRESS                    1000
 #define IDC_STOP                        1001
 #define ID_GENERATE_FILEOUTPUT          32771
@@ -32,7 +29,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        312
+#define _APS_NEXT_RESOURCE_VALUE        310
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310

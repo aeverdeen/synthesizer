@@ -25,16 +25,11 @@
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v100</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
-    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -128,16 +123,21 @@
   <ItemGroup>
     <ClCompile Include="AR.cpp" />
     <ClCompile Include="AudioNode.cpp" />
+    <ClCompile Include="AudioProcessNode.cpp" />
     <ClCompile Include="audio\DirSound.cpp" />
     <ClCompile Include="audio\DirSoundSource.cpp" />
     <ClCompile Include="audio\DirSoundStream.cpp" />
+    <ClCompile Include="Chorus.cpp" />
+    <ClCompile Include="Delay.cpp" />
+    <ClCompile Include="Flange.cpp" />
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="ProgressDlg.cpp" />
-    <ClCompile Include="Recorded.cpp" />
+    <ClCompile Include="Reverb.cpp" />
+    <ClCompile Include="RingModulation.cpp" />
     <ClCompile Include="SineWave.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -150,27 +150,26 @@
     <ClCompile Include="audio\WaveformBuffer.cpp" />
     <ClCompile Include="audio\WaveformWnd.cpp" />
     <ClCompile Include="ToneInstrument.cpp" />
-    <ClCompile Include="WaveInstrumentB.cpp" />
-    <ClCompile Include="WaveInstrumentFactoryB.cpp" />
-    <ClCompile Include="WavePlayerB.cpp" />    
-    <ClCompile Include="WaveInstrument.cpp" />
-    <ClCompile Include="WaveInstrumentFactory.cpp" />
-    <ClCompile Include="WavePlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AR.h" />
     <ClInclude Include="AudioNode.h" />
+    <ClInclude Include="AudioProcessNode.h" />
     <ClInclude Include="audio\DirSound.h" />
     <ClInclude Include="audio\DirSoundSource.h" />
     <ClInclude Include="audio\DirSoundStream.h" />
+    <ClInclude Include="Chorus.h" />
+    <ClInclude Include="Delay.h" />
+    <ClInclude Include="Flange.h" />
     <ClInclude Include="Instrument.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Progress.h" />
     <ClInclude Include="ProgressDlg.h" />
-    <ClInclude Include="Recorded.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Reverb.h" />
+    <ClInclude Include="RingModulation.h" />
     <ClInclude Include="SineWave.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Synthesizer.h" />
@@ -181,17 +180,9 @@
     <ClInclude Include="audio\WaveformBuffer.h" />
     <ClInclude Include="audio\WaveformWnd.h" />
     <ClInclude Include="ToneInstrument.h" />
-    <ClInclude Include="WaveInstrumentB.h" />
-    <ClInclude Include="WaveInstrumentFactoryB.h" />
-    <ClInclude Include="WavePlayerB.h" />    
-    <ClInclude Include="WaveInstrument.h" />
-    <ClInclude Include="WaveInstrumentFactory.h" />
-    <ClInclude Include="WavePlayer.h" />
     <ClInclude Include="xmlhelp.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="media\loveyoumadly120_2.wav" />
-    <None Include="media\shortskirtmet2.wav" />
     <None Include="res\Synthie.ico" />
     <None Include="res\Synthie.rc2" />
     <None Include="res\Toolbar.bmp" />

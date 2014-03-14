@@ -75,25 +75,22 @@
     <ClCompile Include="AR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaveInstrumentB.cpp">
+    <ClCompile Include="AudioProcessNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaveInstrumentFactoryB.cpp">
+    <ClCompile Include="Chorus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WavePlayerB.cpp">
+    <ClCompile Include="Delay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Recorded.cpp">
+    <ClCompile Include="Reverb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WavePlayer.cpp">
+    <ClCompile Include="RingModulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaveInstrument.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WaveInstrumentFactory.cpp">
+    <ClCompile Include="Flange.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,25 +164,22 @@
     <ClInclude Include="AR.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WavePlayerB.h">
+    <ClInclude Include="AudioProcessNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaveInstrumentFactoryB.h">
+    <ClInclude Include="Chorus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaveInstrumentB.h">
+    <ClInclude Include="Delay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WavePlayer.h">
+    <ClInclude Include="Reverb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaveInstrument.h">
+    <ClInclude Include="RingModulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaveInstrumentFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Recorded.h">
+    <ClInclude Include="Flange.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,12 +197,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UserImages.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="media\shortskirtmet2.wav">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="media\loveyoumadly120_2.wav">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
