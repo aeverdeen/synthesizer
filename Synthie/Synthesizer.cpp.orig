@@ -22,8 +22,11 @@ CSynthesizer::CSynthesizer(void)
 	m_bpm = 120;
 	m_beatspermeasure = 4;
 	m_secperbeat = 0.5;
-	m_waveinstfactory.LoadFile("drumriff.wav");	
-	m_waveinstfactoryB.LoadFile("13-AccMastr_A3.wav"); //load wave file
+<<<<<<< HEAD
+	m_waveinstfactory.LoadFile("13-AccMastr_A3.wav"); //load wave file
+=======
+	m_waveinstfactory.LoadFile("drumriff.wav");
+>>>>>>> origin/merging
 }
 
 
@@ -80,17 +83,14 @@ bool CSynthesizer::Generate(double * frame)
             m_waveinstfactory.SetNote(note);
             instrument = m_waveinstfactory.CreateInstrument();
         }
-
-        else if(note->Instrument() == L"WaveB")
-        {
-            m_waveinstfactory.SetNote(note);
-            instrument = m_waveinstfactoryB.CreateInstrument();
-        }
+<<<<<<< HEAD
+=======
 		
 		else if(note->Instrument() == L"Recorded")
 		{
 			instrument = new CRecorded();
 		}
+>>>>>>> origin/merging
 
         // Configure the instrument object
         if(instrument != NULL)

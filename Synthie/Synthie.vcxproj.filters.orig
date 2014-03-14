@@ -75,6 +75,7 @@
     <ClCompile Include="AR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="WaveInstrumentB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,8 +83,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WavePlayerB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+=======
     <ClCompile Include="Recorded.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -94,6 +94,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WaveInstrumentFactory.cpp">
+>>>>>>> origin/merging
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,6 +168,7 @@
     <ClInclude Include="AR.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="WavePlayerB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -174,8 +176,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WaveInstrumentB.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+=======
     <ClInclude Include="WavePlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -186,6 +187,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Recorded.h">
+>>>>>>> origin/merging
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

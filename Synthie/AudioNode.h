@@ -30,7 +30,7 @@ public:
 
 	double GetBpm() {return m_bpmMaster;}
 
-protected:
+//protected:
     double m_sampleRate;
     double m_samplePeriod;
     double m_frame[2];
